@@ -1,5 +1,9 @@
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({port: 8080});
+
+const wss = new WebSocket.Server({
+	perMessageDeflate: false,
+	port: 80
+});
 
 wss.broadcast = function broadcast (data) {
 	wss.clients.forEach(function each (client) {
